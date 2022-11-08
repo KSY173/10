@@ -5,18 +5,17 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
-	int src[100];
-	int i;
+	FILE*fp = NULL;
+	char c;
 	
-	FILE*fp;
+	fp = fopen("sample.txt", "r");
 	
-	fp = fopen("sample.txt", "w");
+	if(fp == NULL)
+		printf("fail to open\n");
 	
-	for(i=0; i<3; i++)
+	while((c = fgetc(fp))!= EOF)
 	{
-		printf("input a word:");
-		scanf("%s", &src);
-		fprintf(fp, "%s\n", src);
+		putchar(c);
 	}
 	
 	fclose(fp);
